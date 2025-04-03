@@ -32,7 +32,44 @@ async function loadSights(url) { // funktion wird definiert
     let response = await fetch(url); // anfrage an server
     let jsondata = await response.json(); // in variable schreiben
     //console.log(jsondata);
-    L.geoJSON(jsondata).addTo(map); // mit leaflet in karte hinzufügen!
+    L.geoJSON(jsondata, {
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map); // mit leaflet in karte hinzufügen!
 }
 loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json"); // funktion wird aufgerufen
 
+// Kraftfahrlinien Wien
+async function loadLines(url) { // funktion wird definiert
+    //console.log(url);
+    let response = await fetch(url); // anfrage an server
+    let jsondata = await response.json(); // in variable schreiben
+    //console.log(jsondata);
+    L.geoJSON(jsondata, {
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map); // mit leaflet in karte hinzufügen!
+}
+loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json"); // funktion wird aufgerufen
+
+// Haltestellen Wien
+async function loadStops(url) { // funktion wird definiert
+    //console.log(url);
+    let response = await fetch(url); // anfrage an server
+    let jsondata = await response.json(); // in variable schreiben
+    //console.log(jsondata);
+    L.geoJSON(jsondata, {
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map); // mit leaflet in karte hinzufügen!
+}
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json"); // funktion wird aufgerufen
+
+// Fußgängerzonen Wien
+async function loadZones(url) { // funktion wird definiert
+    //console.log(url);
+    let response = await fetch(url); // anfrage an server
+    let jsondata = await response.json(); // in variable schreiben
+    //console.log(jsondata);
+    L.geoJSON(jsondata, {
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map); // mit leaflet in karte hinzufügen!
+}
+loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json"); // funktion wird aufgerufen
