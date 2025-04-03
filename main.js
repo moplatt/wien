@@ -28,10 +28,6 @@ L.control.layers({
     "BasemapAT Oberfläche": L.tileLayer.provider('BasemapAT.surface'),
     "BasemapAT highdpi": L.tileLayer.provider('BasemapAT.highdpi'),
     "BasemapAT Satellit": L.tileLayer.provider('BasemapAT.orthofoto'),
-
-
-
-    
 }, {
     "Sehenswürdigkeiten": overlays.sights, // .addto(map) um layer default zu checken
     "Vienna sightseeing Linien": overlays.lines,
@@ -89,7 +85,7 @@ async function loadZones(url) { // funktion wird definiert
 }
 
 // GeoJSON laden und visualisieren
-loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json"); 
-loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json"); 
-loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json"); 
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json"); 
