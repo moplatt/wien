@@ -24,8 +24,12 @@ L.control.layers({
     "BasemapAT": L.tileLayer.provider('BasemapAT.basemap').addTo(map),
     "BasemapAT grau": L.tileLayer.provider('BasemapAT.grau'),
     "BasemapAT overlay": L.tileLayer.provider('BasemapAT.overlay'),
-    "BasemapAT terrain": L.tileLayer.provider('BasemapAT.terrain'),
-    "BasemapAT surface": L.tileLayer.provider('BasemapAT.surface'),
+    "BasemapAT Gelände": L.tileLayer.provider('BasemapAT.terrain'),
+    "BasemapAT Oberfläche": L.tileLayer.provider('BasemapAT.surface'),
+    "BasemapAT highdpi": L.tileLayer.provider('BasemapAT.highdpi'),
+    "BasemapAT Satellit": L.tileLayer.provider('BasemapAT.orthofoto'),
+
+
 
     
 }, {
