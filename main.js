@@ -45,7 +45,7 @@ async function loadSights(url) { // funktion wird definiert
     //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
-    }).addTo(map); // mit leaflet in karte hinzufügen!
+    }).addTo(overlays.sights); // mit leaflet in karte hinzufügen!
 }
 
 // Kraftfahrlinien Wien
@@ -56,7 +56,7 @@ async function loadLines(url) { // funktion wird definiert
     //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
-    }).addTo(map); // mit leaflet in karte hinzufügen!
+    }).addTo(overlays.lines); // mit leaflet in karte hinzufügen!
 }
 
 // Haltestellen Wien
@@ -67,7 +67,7 @@ async function loadStops(url) { // funktion wird definiert
     //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
-    }).addTo(map); // mit leaflet in karte hinzufügen!
+    }).addTo(overlays.stops); // mit leaflet in karte hinzufügen!
 }
 
 // Fußgängerzonen Wien
@@ -78,7 +78,7 @@ async function loadZones(url) { // funktion wird definiert
     //console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
-    }).addTo(map); // mit leaflet in karte hinzufügen!
+    }).addTo(overlays.zones); // mit leaflet in karte hinzufügen!
 }
 
 // GeoJSON laden und visualisieren
