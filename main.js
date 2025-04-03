@@ -27,12 +27,12 @@ L.control.scale({
 }).addTo(map);
 
 // Sehenswürdigkeiten Standorte Wien
-async function loadSights(url) {
+async function loadSights(url) { // funktion wird definiert
     //console.log(url);
-    let response = await fetch(url); 
-    let jsondata = await response.json();
+    let response = await fetch(url); // anfrage an server
+    let jsondata = await response.json(); // in variable schreiben
     //console.log(jsondata);
-    L.geoJSON(jsondata).addTo(map);
+    L.geoJSON(jsondata).addTo(map); // mit leaflet in karte hinzufügen!
 }
-loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json"); // funktion wird aufgerufen
 
