@@ -58,6 +58,14 @@ async function loadSights(url) { // funktion wird definiert
                     popupAnchor: [0, -37] // popup um Bildhöhe nach oben verschieben
                 })
             });
+        },
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup(`
+                <img src="${feature.properties.THUMBNAIL}" alt="*">
+                <h4>${feature.properties.NAME} <h4/>
+                <address>${feature.properties.ADRESSE}</adress>
+                <a href="${feature.properties.WEITERE_INF}" target="wien">Webseite</a>
+                `);
         }
     }).addTo(overlays.sights); // mit leaflet in karte hinzufügen!
 };
