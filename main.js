@@ -22,8 +22,8 @@ let overlays = {
 
 // Layercontrol
 L.control.layers({
-    "BasemapAT": L.tileLayer.provider('BasemapAT.basemap').addTo(map),
-    "BasemapAT grau": L.tileLayer.provider('BasemapAT.grau'),
+    "BasemapAT": L.tileLayer.provider('BasemapAT.basemap'),
+    "BasemapAT grau": L.tileLayer.provider('BasemapAT.grau').addTo(map),
     "BasemapAT overlay": L.tileLayer.provider('BasemapAT.overlay'),
     "BasemapAT Gelände": L.tileLayer.provider('BasemapAT.terrain'),
     "BasemapAT Oberfläche": L.tileLayer.provider('BasemapAT.surface'),
@@ -60,7 +60,34 @@ async function loadLines(url) { // funktion wird definiert
     let jsondata = await response.json(); // in variable schreiben
     //console.log(jsondata);
     L.geoJSON(jsondata, {
-        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
+        style: function (feature) {
+            //console.log(feature.properties.LINE_NAME);
+            let lineColor;
+
+            if (feature.properties.LINE_NAME == "Yellow Line") {
+                lineColor = "#FFDC00";
+            } else if (feature.properties.LINE_NAME == "Blue Line") {
+                lineColor = "#0074D9";
+            } else if (feature.properties.LINE_NAME == "Red Line") {
+                lineColor = "#FF4136";
+            } else if (feature.properties.LINE_NAME == "Green Line") {
+                lineColor = "#2ECC40";
+            } else if (feature.properties.LINE_NAME == "Orange Line") {
+                lineColor = "#FF851B";
+            } else if (feature.properties.LINE_NAME == "Gray Line") {
+                lineColor = "#AAAAAA";
+            } else {
+                lineColor = "#111111";
+            }
+
+            return {
+                color: lineColor,
+                weight: 3,
+                opacity: 0.4,
+                fillOpacity: 0.1,
+            }
+        }
     }).addTo(overlays.lines); // mit leaflet in karte hinzufügen!
 };
 
