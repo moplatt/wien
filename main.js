@@ -82,7 +82,16 @@ async function loadZones(url) { // funktion wird definiert
     let jsondata = await response.json(); // in variable schreiben
     //console.log(jsondata);
     L.geoJSON(jsondata, {
-        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
+        style: function (feature) {
+            console.log(feature);
+            return {
+                color: "#F012BE",
+                weight: 1,
+                opacity: 0.4,
+                fillOpacity: 0.1,
+            }
+        }
     }).addTo(overlays.zones); // mit leaflet in karte hinzufügen!
 };
 
