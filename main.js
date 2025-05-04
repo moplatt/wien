@@ -143,17 +143,17 @@ async function loadStops(url) { // funktion wird definiert
             });
         },
         onEachFeature: function(feature, layer) {
-            // console.log(feature.properties)
+            console.log(feature.properties)
             layer.bindPopup(`
                 <h4 style="display: flex; align-items: center;"> 
                     <img src= "icons/bus.png" style="position: relative; top: -10px;">
                     ${feature.properties.LINE_NAME}
                 </h4>
-                <div>
-                    <img src= "icons/helipad.png" style="position: relative; top: 5px;">
+                <div style="position: relative; top: -30px;">
+                    <img src= "icons/helipad.png" style="position: relative; top: 6px;">
                     ${feature.properties.STAT_NAME}
                 </div>
-                <div>
+                <div style="position: relative; top: -35px;">
                     <img src= "icons/direction_down.png" style="position: relative; top: -10px;">
                 </div>
                 `);
@@ -232,7 +232,7 @@ async function loadHotels(url) { // funktion wird definiert
             });
         },
         onEachFeature: function(feature, layer) {
-            console.log(feature.properties)
+            // console.log(feature.properties)
             layer.bindPopup(`
                 <h4 style="font-size: 1.2em;"> 
                     ${feature.properties.BETRIEB}
