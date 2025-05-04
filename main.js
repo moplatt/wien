@@ -9,7 +9,7 @@ let stephansdom = {
 };
 
 // Karte initialisieren
-let map = L.map("map",{
+let map = L.map("map", {
     maxZoom: 19
 }
 ).setView([stephansdom.lat, stephansdom.lng], stephansdom.zoom);
@@ -21,7 +21,7 @@ let overlays = {
     stops: L.featureGroup().addTo(map),
     zones: L.featureGroup().addTo(map),
     hotels: L.markerClusterGroup({
-        disableClusteringAtZoom:17
+        disableClusteringAtZoom: 17
     }).addTo(map),
 };
 
@@ -64,7 +64,7 @@ async function loadSights(url) { // funktion wird definiert
                 })
             });
         },
-        onEachFeature: function(feature, layer) {
+        onEachFeature: function (feature, layer) {
             layer.bindPopup(`
                 <img src="${feature.properties.THUMBNAIL}" alt="*">
                 <h4>${feature.properties.NAME} </h4>
@@ -110,7 +110,7 @@ async function loadLines(url) { // funktion wird definiert
                 fillOpacity: 0.1,
             }
         },
-        onEachFeature: function(feature, layer) {
+        onEachFeature: function (feature, layer) {
             // console.log(feature.properties)
             // flex puts all h4 in one line
             // position: relative; top moves pixel in relation to original position
@@ -131,6 +131,7 @@ async function loadStops(url) { // funktion wird definiert
     let response = await fetch(url); // anfrage an server
     let jsondata = await response.json(); // in variable schreiben
     //console.log(jsondata);
+
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
@@ -142,7 +143,7 @@ async function loadStops(url) { // funktion wird definiert
                 })
             });
         },
-        onEachFeature: function(feature, layer) {
+        onEachFeature: function (feature, layer) {
             console.log(feature.properties)
             layer.bindPopup(`
                 <h4 style="display: flex; align-items: center;"> 
@@ -178,7 +179,7 @@ async function loadZones(url) { // funktion wird definiert
                 fillOpacity: 0.1,
             }
         },
-        onEachFeature: function(feature, layer) {
+        onEachFeature: function (feature, layer) {
             // console.log(feature.properties)
             layer.bindPopup(`
                 <h4 style="display: flex; align-items: center;"> 
@@ -231,7 +232,7 @@ async function loadHotels(url) { // funktion wird definiert
                 })
             });
         },
-        onEachFeature: function(feature, layer) {
+        onEachFeature: function (feature, layer) {
             // console.log(feature.properties)
             layer.bindPopup(`
                 <h4 style="font-size: 1.2em;"> 
