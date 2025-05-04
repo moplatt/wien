@@ -179,7 +179,7 @@ async function loadZones(url) { // funktion wird definiert
             }
         },
         onEachFeature: function(feature, layer) {
-            console.log(feature.properties)
+            // console.log(feature.properties)
             layer.bindPopup(`
                 <h4 style="display: flex; align-items: center;"> 
                     Fußgängerzone ${feature.properties.ADRESSE}
@@ -230,6 +230,32 @@ async function loadHotels(url) { // funktion wird definiert
                     popupAnchor: [0, -37] // popup um Bildhöhe nach oben verschieben
                 })
             });
+        },
+        onEachFeature: function(feature, layer) {
+            console.log(feature.properties)
+            layer.bindPopup(`
+                <h4 style="font-size: 1.2em;"> 
+                    ${feature.properties.BETRIEB}
+                </h4>
+                <div style="font-weight: bold;">
+                    ${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT}
+                </div>
+                <div style="font-weight: bold;">
+                    _____________________________
+                </div>
+                <div>
+                    Addr.: ${feature.properties.ADRESSE}
+                </div>
+                <div>
+                <a href= "${feature.properties.KONTAKT_TEL}" target="wien"> Tel.: ${feature.properties.KONTAKT_TEL}</a>
+                </div>
+                <div>
+                <a href="${feature.properties.KONTAKT_EMAIL}" target="wien">${feature.properties.KONTAKT_EMAIL}</a>
+                </div>
+                <div>
+                <a href="${feature.properties.WEBLINK1}" target="wien">Homepage</a>
+                </div>
+                `);
         }
     }).addTo(overlays.hotels); // mit leaflet in karte hinzufügen!
 };
