@@ -67,7 +67,7 @@ async function loadSights(url) { // funktion wird definiert
         onEachFeature: function(feature, layer) {
             layer.bindPopup(`
                 <img src="${feature.properties.THUMBNAIL}" alt="*">
-                <h4>${feature.properties.NAME} <h4/>
+                <h4>${feature.properties.NAME} </h4>
                 <address>${feature.properties.ADRESSE}</adress>
                 <a href="${feature.properties.WEITERE_INF}" target="wien">Webseite</a>
                 `);
@@ -109,6 +109,18 @@ async function loadLines(url) { // funktion wird definiert
                 opacity: 0.4,
                 fillOpacity: 0.1,
             }
+        },
+        onEachFeature: function(feature, layer) {
+            // console.log(feature.properties)
+            // flex puts all h4 in one line
+            // position: relative; top moves pixel in relation to original position
+            layer.bindPopup(`
+                <h4 style="display: flex"> 
+                    <img src= "icons/bus.png" style="position: relative; top: -20px;">
+                    ${feature.properties.LINE_NAME}
+                </h4>
+                <div>${feature.properties.FROM_STAT} ${feature.properties.TO_NAME}</div>
+                `);
         }
     }).addTo(overlays.lines); // mit leaflet in karte hinzufügen!
 };
@@ -129,6 +141,22 @@ async function loadStops(url) { // funktion wird definiert
                     popupAnchor: [0, -37] // popup um Bildhöhe nach oben verschieben
                 })
             });
+        },
+        onEachFeature: function(feature, layer) {
+            // console.log(feature.properties)
+            layer.bindPopup(`
+                <h4 style="display: flex; align-items: center;"> 
+                    <img src= "icons/bus.png" style="position: relative; top: -10px;">
+                    ${feature.properties.LINE_NAME}
+                </h4>
+                <div>
+                    <img src= "icons/helipad.png" style="position: relative; top: 5px;">
+                    ${feature.properties.STAT_NAME}
+                </div>
+                <div>
+                    <img src= "icons/direction_down.png" style="position: relative; top: -10px;">
+                </div>
+                `);
         }
     }).addTo(overlays.stops); // mit leaflet in karte hinzufügen!
 };
@@ -149,6 +177,22 @@ async function loadZones(url) { // funktion wird definiert
                 opacity: 0.4,
                 fillOpacity: 0.1,
             }
+        },
+        onEachFeature: function(feature, layer) {
+            console.log(feature.properties)
+            layer.bindPopup(`
+                <h4 style="display: flex; align-items: center;"> 
+                    Fußgängerzone ${feature.properties.ADRESSE}
+                </h4>
+                <div>
+                    <img src= "icons/clock.png" style="position: relative; top: 8px;">
+                    ${feature.properties.ZEITRAUM}
+                </div>
+                <div>
+                    <img src= "icons/information.png" style="position: relative; top: 5px;">
+                    ${feature.properties.AUSN_TEXT}
+                </div>
+                `);
         }
     }).addTo(overlays.zones); // mit leaflet in karte hinzufügen!
 };
