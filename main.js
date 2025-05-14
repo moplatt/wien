@@ -115,11 +115,14 @@ async function loadLines(url) { // funktion wird definiert
             // flex puts all h4 in one line
             // position: relative; top moves pixel in relation to original position
             layer.bindPopup(`
-                <h4 style="display: flex"> 
-                    <img src= "icons/bus.png" style="position: relative; top: -20px;">
-                    ${feature.properties.LINE_NAME}
-                </h4>
-                <div>${feature.properties.FROM_STAT} ${feature.properties.TO_NAME}</div>
+                 <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
+                <p>
+                <i class="fa-regular fa-circle-stop"></i> ${feature.properties.FROM_NAME}<br>
+                <i class="fa-solid fa-down-long"></i>
+                <br>
+                <i class="fa-regular fa-circle-stop"></i> ${feature.properties.TO_NAME}
+                <br>
+                </p>
                 `);
         }
     }).addTo(overlays.lines); // mit leaflet in karte hinzufügen!
@@ -146,17 +149,8 @@ async function loadStops(url) { // funktion wird definiert
         onEachFeature: function (feature, layer) {
             console.log(feature.properties)
             layer.bindPopup(`
-                <h4 style="display: flex; align-items: center;"> 
-                    <img src= "icons/bus.png" style="position: relative; top: -10px;">
-                    ${feature.properties.LINE_NAME}
-                </h4>
-                <div style="position: relative; top: -30px;">
-                    <img src= "icons/helipad.png" style="position: relative; top: 6px;">
-                    ${feature.properties.STAT_NAME}
-                </div>
-                <div style="position: relative; top: -35px;">
-                    <img src= "icons/direction_down.png" style="position: relative; top: -10px;">
-                </div>
+                <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
+                <p> ${feature.properties.STAT_ID} ${feature.properties.STAT_NAME}</p>
                 `);
         }
     }).addTo(overlays.stops); // mit leaflet in karte hinzufügen!
@@ -182,17 +176,13 @@ async function loadZones(url) { // funktion wird definiert
         onEachFeature: function (feature, layer) {
             // console.log(feature.properties)
             layer.bindPopup(`
-                <h4 style="display: flex; align-items: center;"> 
-                    Fußgängerzone ${feature.properties.ADRESSE}
-                </h4>
-                <div>
-                    <img src= "icons/clock.png" style="position: relative; top: 8px;">
-                    ${feature.properties.ZEITRAUM}
-                </div>
-                <div>
-                    <img src= "icons/information.png" style="position: relative; top: 5px;">
-                    ${feature.properties.AUSN_TEXT}
-                </div>
+                <h4>Fußgängerzone ${feature.properties.ADRESSE}</h4>
+                <p><i class="fa-regular fa-clock"></i>
+                ${feature.properties.ZEITRAUM}
+                </p>
+                <p><i class="fa-solid fa-circle-info"></i>
+                ${feature.properties.AUSN_TEXT}
+                </p>
                 `);
         }
     }).addTo(overlays.zones); // mit leaflet in karte hinzufügen!
@@ -235,27 +225,13 @@ async function loadHotels(url) { // funktion wird definiert
         onEachFeature: function (feature, layer) {
             // console.log(feature.properties)
             layer.bindPopup(`
-                <h4 style="font-size: 1.2em;"> 
-                    ${feature.properties.BETRIEB}
-                </h4>
-                <div style="font-weight: bold;">
-                    ${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT}
-                </div>
-                <div style="font-weight: bold;">
-                    _____________________________
-                </div>
-                <div>
-                    Addr.: ${feature.properties.ADRESSE}
-                </div>
-                <div>
-                <a href= "${feature.properties.KONTAKT_TEL}" target="wien"> Tel.: ${feature.properties.KONTAKT_TEL}</a>
-                </div>
-                <div>
-                <a href="${feature.properties.KONTAKT_EMAIL}" target="wien">${feature.properties.KONTAKT_EMAIL}</a>
-                </div>
-                <div>
-                <a href="${feature.properties.WEBLINK1}" target="wien">Homepage</a>
-                </div>
+                <h3>${feature.properties.BETRIEB}</h3>
+                <h4>${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT}</h4>
+                <hr>
+                Addr.: ${feature.properties.ADRESSE}<br>
+                Tel.: <a href="tel:${feature.properties.KONTAKT_TEL}">${feature.properties.KONTAKT_TEL}</a><br>
+                <a href="mailto:${feature.properties.KONTAKT_EMAIL}">${feature.properties.KONTAKT_EMAIL}</a><br>
+                <a href="${feature.properties.WEBLINK1}" target="wien">Homepage</a><br>
                 `);
         }
     }).addTo(overlays.hotels); // mit leaflet in karte hinzufügen!
